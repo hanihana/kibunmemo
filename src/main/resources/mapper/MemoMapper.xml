@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.example.demo.repository.MemoMapper">
+
+	<!-- マッピング定義 -->
+	<resultMap type="com.example.demo.model.Memo" id="memo">
+		<id column="id" property="id"></id>
+		<result column="feeling" property="feeling"></result>
+		<result column="text" property="text"></result>
+		<result column="datetime" property="datetime"></result>
+	</resultMap>
+	
+	<!-- メモ1件登録 -->
+	<insert id = "insertOne">
+		INSERT INTO kibun_memo (
+			, feeling
+			, text
+			, datetime
+		)
+		VALUES (
+			, #{feeling}
+			, #{text}
+			, #{datetime}
+		)
+	</insert>
+
+	<!-- メモ一覧取得 -->
+    <select id = "findAll" resultType="com.example.demo.model.Memo">
+        SELECT
+        	*
+        FROM
+        	kibun_memo
+    </select>
+    
+    <!-- メモ1件取得 -->
+    <select id="findOne" resultMap="memo">
+    	SELECT
+    		*
+    	FROM
+    		kibun_memo
+    	WHERE
+    		id = #{id}
+    </select>
+</mapper>

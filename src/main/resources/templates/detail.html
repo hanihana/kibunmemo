@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>メモの編集</title>
+</head>
+<body>
+	<form action="post" th:action="@{/kibunmemo/detail}" th:object="${memoDetailForm}">
+		<table>
+			<tr>
+				<th>気分</th>
+				<td>
+					<input type="text" th:field="*{feeling}">
+				</td>
+			</tr>
+			<tr>
+				<th>内容</th>
+				<td>
+					<input type="text" th:field="*{text}">
+				</td>
+			</tr>
+			<tr>
+				<th>日時</th>
+				<td th:text="*{datetime}"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

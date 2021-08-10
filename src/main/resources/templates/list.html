@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>気分メモ一覧</title>
+</head>
+<body>
+  <div th:each="memo : ${memoList}">
+  	<table>
+  		<tr>
+  			<th class="th-title">日付</th>
+  			<td th:text="${#dates.format(memo.datetime, 'YYYY/MM/dd H:mm')}"></td>
+  		</tr>
+  		<tr>
+  			<th class="th-title">内容</th>
+  			<td th:text="${memo.text}"></td>
+  		</tr>
+  		<tr>
+  			<th class="th-title">気分</th>
+  			<td th:text="${memo.feeling}"></td>
+  			<th></th>
+  			<td>
+  				<a class="btn btn-primary" th:href="@{'kibunmemo/detail/' + ${memo.id}}">詳細</a>
+  			</td>
+  		</tr>
+    </table>
+  </div>
+</body>
+</html>
