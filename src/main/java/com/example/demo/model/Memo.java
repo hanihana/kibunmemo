@@ -13,6 +13,6 @@ public class Memo {
 	
 	private String text;
 	
-	private Date datetime;
+	private Date date;
 
 }

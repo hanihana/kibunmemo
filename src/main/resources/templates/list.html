@@ -9,7 +9,7 @@
   	<table>
   		<tr>
   			<th class="th-title">日付</th>
-  			<td th:text="${#dates.format(memo.datetime, 'YYYY/MM/dd H:mm')}"></td>
+  			<td th:text="${#dates.format(memo.date,'YYYY/MM/dd')}"></td>
   		</tr>
   		<tr>
   			<th class="th-title">内容</th>

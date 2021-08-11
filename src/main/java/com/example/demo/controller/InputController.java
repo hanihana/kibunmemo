@@ -48,7 +48,7 @@ public class InputController {
 		
 		memoService.inputOne(memo);
 		
-		return "redirect:/list";
+		return "redirect:/kibunmemo/list";
 	}
 
 }

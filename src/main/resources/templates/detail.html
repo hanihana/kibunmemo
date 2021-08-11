@@ -21,7 +21,7 @@
 			</tr>
 			<tr>
 				<th>日時</th>
-				<td th:text="*{datetime}"></td>
+				<td th:text="*{#dates.format(date,'yyyy/MM/dd')}"></td>
 			</tr>
 		</table>
 	</form>

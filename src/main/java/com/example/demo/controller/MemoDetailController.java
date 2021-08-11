@@ -31,7 +31,7 @@ public class MemoDetailController {
 		
 		model.addAttribute("memo", form);
 		
-		return "kibunmemo/detail";
+		return "detail";
 	}
 
 }
