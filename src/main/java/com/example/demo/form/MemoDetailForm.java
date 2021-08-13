@@ -1,6 +1,6 @@
 package com.example.demo.form;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 
@@ -10,6 +10,6 @@ public class MemoDetailForm {
 	private String id;
 	private String feeling;
 	private String text;
-	private Date date;
+	private LocalDate date;
 	
 }

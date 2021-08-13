@@ -28,7 +28,7 @@
 	</insert>
 
 	<!-- メモ一覧取得 -->
-    <select id = "findAll" resultType="com.example.demo.model.Memo">
+    <select id = "findAll" resultType="Memo">
         SELECT
         	*
         FROM
@@ -36,7 +36,7 @@
     </select>
     
     <!-- メモ1件取得 -->
-    <select id="findOne" resultMap="memo">
+    <select id = "findOne" resultMap="memo">
     	SELECT
     		*
     	FROM
@@ -44,4 +44,23 @@
     	WHERE
     		id = #{id}
     </select>
+    
+    <!-- メモ1件更新 -->
+    <update id = "updateOne">
+    	UPDATE
+    		kibun_memo
+    	SET
+    		  feeling = #{feeling}
+    		, text = #{text}
+    	WHERE
+    		id = #{id}
+    </update>
+    
+    <!-- メモ1件削除 -->
+    <delete id = "deleteOne">
+    	DELETE FROM
+    		kibun_memo
+    	WHERE
+    		id = #{id}
+    </delete>
 </mapper>

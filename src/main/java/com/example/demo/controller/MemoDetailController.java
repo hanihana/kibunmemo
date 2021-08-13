@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.form.MemoDetailForm;
@@ -29,9 +30,22 @@ public class MemoDetailController {
 		Memo memo = service.getOne(id);
 		form = modelMapper.map(memo, MemoDetailForm.class);
 		
-		model.addAttribute("memo", form);
+		model.addAttribute("memoDetailForm", form);
 		
 		return "detail";
 	}
 
+	/** メモ更新処理 */
+	@PostMapping(value = "/detail", params = "update")
+	public String updateMemo(MemoDetailForm form, Model model) {
+		service.updateMemoOne(form.getId(), form.getFeeling(), form.getText());
+		return "redirect:/kibunmemo/list";
+	}
+	
+	/** メモ削除処理 */
+	@PostMapping(value = "/detail", params = "delete")
+	public String deleteMemo(MemoDetailForm form, Model model) {
+		service.deleteMemoOne(form.getId());
+		return "redirect:/kibunmemo/list";
+	}
 }

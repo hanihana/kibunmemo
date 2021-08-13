@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 
@@ -13,6 +13,6 @@ public class Memo {
 	
 	private String text;
 	
-	private Date date;
+	private LocalDate date;
 
 }

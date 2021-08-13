@@ -28,4 +28,15 @@ public class MemoService {
 	public Memo getOne(String id) {
 		return mapper.findOne(id);
 	}
+	
+	/** メモを1件更新 */
+	public void updateMemoOne(String id, String feeling,
+			String text) {
+		mapper.updateOne(id, feeling, text);
+	}
+	
+	/** メモを1件削除 */
+	public void deleteMemoOne(String id) {
+		mapper.deleteOne(id);
+	}
 }
