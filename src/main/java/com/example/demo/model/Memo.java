@@ -13,6 +13,6 @@ public class Memo {
 	
 	private String text;
 	
-	private LocalDate date;
+	private LocalDate day;
 
 }

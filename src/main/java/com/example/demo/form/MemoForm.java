@@ -13,15 +13,15 @@ import lombok.Data;
 @Data
 public class MemoForm {
 	
-	@NotBlank
+	@NotBlank(groups = ValidGroup1.class)
 	private String feeling;
 	
-	@NotBlank
-	@Length(min = 1, max = 100)
+	@NotBlank(groups = ValidGroup1.class)
+	@Length(min = 1, max = 100, groups = ValidGroup2.class)
 	private String text;
 	
-	@NotNull
+	@NotNull(groups = ValidGroup1.class)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate date;
+	private LocalDate day;
 
 }

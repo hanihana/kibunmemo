@@ -13,12 +13,15 @@ import com.example.demo.form.MemoDetailForm;
 import com.example.demo.model.Memo;
 import com.example.demo.service.MemoService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/kibunmemo")
+@Slf4j
 public class MemoDetailController {
 	
 	@Autowired
-	private MemoService service;
+	private MemoService memoService;
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -27,7 +30,7 @@ public class MemoDetailController {
 	@GetMapping("/detail/{id}")
 	public String getMemo(MemoDetailForm form, Model model,
 			@PathVariable("id") String id) {
-		Memo memo = service.getOne(id);
+		Memo memo = memoService.getOne(id);
 		form = modelMapper.map(memo, MemoDetailForm.class);
 		
 		model.addAttribute("memoDetailForm", form);
@@ -38,14 +41,20 @@ public class MemoDetailController {
 	/** メモ更新処理 */
 	@PostMapping(value = "/detail", params = "update")
 	public String updateMemo(MemoDetailForm form, Model model) {
-		service.updateMemoOne(form.getId(), form.getFeeling(), form.getText());
+		
+		try {
+			memoService.updateMemoOne(form.getId(), form.getFeeling(), form.getText());
+		} catch(Exception e) {
+			log.error("メモ更新でエラー", e);
+		}
+		
 		return "redirect:/kibunmemo/list";
 	}
 	
 	/** メモ削除処理 */
 	@PostMapping(value = "/detail", params = "delete")
 	public String deleteMemo(MemoDetailForm form, Model model) {
-		service.deleteMemoOne(form.getId());
+		memoService.deleteMemoOne(form.getId());
 		return "redirect:/kibunmemo/list";
 	}
 }

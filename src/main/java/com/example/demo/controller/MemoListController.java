@@ -21,6 +21,7 @@ public class MemoListController {
 	/** メモ一覧表示 */
 	@GetMapping("/list")
 	public String getMemoList(Model model) {
+		System.out.println(memoService.getAll());
 		List<Memo> memoList = memoService.getAll();
 		model.addAttribute("memoList", memoList);
 		return "list";

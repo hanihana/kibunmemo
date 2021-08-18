@@ -10,6 +10,6 @@ public class MemoDetailForm {
 	private String id;
 	private String feeling;
 	private String text;
-	private LocalDate date;
+	private LocalDate day;
 	
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.form.GroupOrder;
 import com.example.demo.form.MemoForm;
 import com.example.demo.model.Memo;
 import com.example.demo.service.MemoService;
@@ -30,12 +31,13 @@ public class InputController {
 	/** メモ作成画面表示 */
 	@GetMapping("/insert")
 	public String getInsert(@ModelAttribute MemoForm form) {
+		
 		return "insert";
 	}
 	
 	/** メモ登録処理 */
 	@PostMapping("/insert")
-	public String postInsert(@ModelAttribute @Validated MemoForm form,
+	public String postInsert(@ModelAttribute @Validated(GroupOrder.class) MemoForm form,
 			BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.model.Memo;
 import com.example.demo.repository.MemoMapper;
@@ -19,7 +20,7 @@ public class MemoService {
 		mapper.insertOne(memo);
 	}
 	
-	/** メモを全件表示 */
+	/** メモを全件取得 */
 	public List<Memo> getAll() {
 		return mapper.findAll();
 	}
@@ -30,6 +31,7 @@ public class MemoService {
 	}
 	
 	/** メモを1件更新 */
+	@Transactional
 	public void updateMemoOne(String id, String feeling,
 			String text) {
 		mapper.updateOne(id, feeling, text);
