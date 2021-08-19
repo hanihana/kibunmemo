@@ -30,6 +30,8 @@ dependencies {
 	implementation group: 'org.webjars', name: 'webjars-locator', version: '0.41'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.5.3'
 	implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5', version: '3.0.4.RELEASE'
+	implementation group: 'org.springframework', name: 'spring-aop'
+	runtimeOnly group: 'org.aspectj', name: 'aspectjweaver'
 	compileOnly 'org.projectlombok:lombok'
 	compileOnly 'org.modelmapper:modelmapper:0.7.5'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
