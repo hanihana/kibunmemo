@@ -13,6 +13,8 @@ import lombok.Data;
 @Data
 public class MemoForm {
 	
+	private Integer id;
+	
 	@NotBlank(groups = ValidGroup1.class)
 	private String feeling;
 	

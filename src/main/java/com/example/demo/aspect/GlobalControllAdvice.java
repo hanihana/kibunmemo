@@ -40,6 +40,6 @@ public class GlobalControllAdvice {
 		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
 		
 		return "error";
-	}
+	} 
 
 }

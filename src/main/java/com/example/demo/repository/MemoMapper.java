@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.example.demo.model.Memo;
+import com.example.demo.model.User;
 
 @Mapper
 public interface MemoMapper {
@@ -26,5 +27,8 @@ public interface MemoMapper {
 	
 	/** メモ1件削除 */
 	public void deleteOne(@Param("id") String id);
+	
+	/** ユーザー登録 */
+	public void insertUser(User user);
 	
 }

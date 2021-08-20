@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.form.GroupOrder;
 import com.example.demo.form.SignupForm;
+import com.example.demo.model.User;
+import com.example.demo.service.MemoService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,6 +25,12 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/kibunmemo")
 @Slf4j
 public class SignupController {
+	
+	@Autowired
+	private MemoService memoService;
+	
+	@Autowired
+	private ModelMapper modelMapper;
 
 	@GetMapping("/signup")
 	public String getSignup(Model model, @ModelAttribute SignupForm form) {
@@ -37,7 +47,11 @@ public class SignupController {
 		}
 
 		log.info(form.toString());
-
+		
+		User user = modelMapper.map(form, User.class);
+		
+		memoService.inputUser(user);
+		
 		return "redirect:/login";
 	}
 	

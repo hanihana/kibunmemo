@@ -5,12 +5,19 @@
 <!-- Mapperとxmlのマッピング -->
 <mapper namespace="com.example.demo.repository.MemoMapper">
 
-	<!-- マッピング定義 -->
+	<!-- マッピング定義(メモ) -->
 	<resultMap type="com.example.demo.model.Memo" id="memo">
 		<id column="id" property="id"></id>
 		<result column="feeling" property="feeling"></result>
 		<result column="text" property="text"></result>
 		<result column="day" property="day"></result>
+	</resultMap>
+	
+	<!-- マッピング定義(ユーザー) -->
+	<resultMap type="com.example.demo.model.User" id="user">
+		<id column="id" property="id"></id>
+		<result column="user_id" property="userId"></result>
+		<result column="password" property="password"></result>
 	</resultMap>
 	
 	<!-- メモ1件登録 -->
@@ -63,4 +70,17 @@
     	WHERE
     		id = #{id}
     </delete>
+    
+    <!-- ログインユーザー登録 -->
+    <insert id = "insertUser">
+		INSERT INTO login_user (
+			  user_id
+			, password
+		)
+		VALUES (
+			  #{userId}
+			, #{password}
+		)
+	</insert>
+	
 </mapper>

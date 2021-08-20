@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.model.Memo;
+import com.example.demo.model.User;
 import com.example.demo.repository.MemoMapper;
 
 @Service
@@ -40,5 +41,10 @@ public class MemoService {
 	/** メモを1件削除 */
 	public void deleteMemoOne(String id) {
 		mapper.deleteOne(id);
+	}
+	
+	/** ユーザー登録 */
+	public void inputUser(User user) {
+		mapper.insertUser(user);
 	}
 }
