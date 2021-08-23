@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +15,10 @@ import com.example.demo.repository.MemoMapper;
 public class MemoService {
 	
 	@Autowired
-	MemoMapper mapper;
+	private MemoMapper mapper;
+	
+	@Autowired
+	private PasswordEncoder encoder;
 	
 	/** メモ登録 */
 	public void inputOne(Memo memo) {
@@ -45,6 +49,16 @@ public class MemoService {
 	
 	/** ユーザー登録 */
 	public void inputUser(User user) {
+		user.setRole("ROLE_GENERAL");
+		
+		String rawPassword = user.getPassword();
+		user.setPassword(encoder.encode(rawPassword));
+		
 		mapper.insertUser(user);
+	}
+	
+	/** ログインユーザー情報取得 */
+	public User getLoginUser(String userId) {
+		return mapper.findLoginUser(userId);
 	}
 }

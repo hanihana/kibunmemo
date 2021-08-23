@@ -31,4 +31,7 @@ public interface MemoMapper {
 	/** ユーザー登録 */
 	public void insertUser(User user);
 	
+	/** ログインユーザー取得 */
+	public User findLoginUser(String userId);
+	
 }

@@ -33,6 +33,7 @@ public class InputController {
 	public String getInsert(@ModelAttribute MemoForm form) {
 		
 		return "insert";
+		
 	}
 	
 	/** メモ登録処理 */
