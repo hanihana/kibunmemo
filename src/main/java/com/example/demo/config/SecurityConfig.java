@@ -44,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				.antMatchers("/login").permitAll() // 直リンクOK
 				.antMatchers("/kibunmemo/signup").permitAll() // 直リンクOK
+				.antMatchers("/kibunmemo/signup/rest").permitAll() // 直リンクOK
 				.anyRequest().authenticated(); // それ以外は直リンクNG
 		
 		http
@@ -56,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/kibunmemo/list", true); // 成功後の遷移先
 		
 		// CSRF対策を無効に設定（一時的）
-		http.csrf().disable();
+		// http.csrf().disable();
 	}
 	
 	/** 認証の設定 */

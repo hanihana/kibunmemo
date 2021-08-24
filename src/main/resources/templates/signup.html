@@ -11,26 +11,42 @@
 <!-- JS読込 -->
 <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" defer></script>
 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+<script th:src="@{/js/user/signup.js}" defer></script>
 <title>ユーザー登録</title>
 </head>
 <body class="bg-light">
 	<form id="signup-form" method="post" action="/kibunmemo/signup"
 		class="form-signup" th:object="${signupForm}">
 		<h1 class="text-center">ユーザー登録</h1>
+		<br>
 		<div class="form-group">
 			<label for="userId" th:text="#{userId}"></label>
 			<input type="text" class="form-control" th:field="*{userId}"
 			th:errorclass="is-invalid">
 			<div class="invalid-feedback" th:errors="*{userId}"></div>
 		</div>
+		<br>
 		<div class="form-group">
 			<label for="password" th:text="#{password}"></label>
 			<input type="text" class="form-control" th:field="*{password}"
 			th:errorclass="is-invalid">
 			<div class="invalid-feedback" th:errors="*{password}"></div>
 		</div>
+		<br>
+		<br>
 		<input type="submit" value="ユーザー登録" class="btn btn-info w-100 mt-3">
-		<!-- <input type="hidden" th:name="${_csrfParameterName}" th:value="${_csrf.token}"> -->
+		<button id="btn-signup" type="button" class="btn btn-info w-100 mt-3">
+			ユーザー登録(REST)
+		</button>
+		<br>
+		<a th:href="@{/login}">
+			<button class="btn btn-outline-info" type="button" name="back"
+			data-toggle="tooltip" title="戻る">←</button>
+		</a>
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 	</form>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>
