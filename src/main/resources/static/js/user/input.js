@@ -4,26 +4,26 @@
 jQuery(function($) {
 	
 	/** 登録ボタンを押したときの処理. */
-	$('#btn-signup').click(function(event) {
+	$('#btn-input').click(function(event) {
 		// ユーザー登録
-		signupUser();
+		inputMemo();
 	});
 });
 
 /** ユーザー登録処理 */
-function signupUser() {
+function inputMemo() {
 	
 	// バリデーション結果をクリア
 	removeValidResult();
 	
 	// フォームの値を取得
-	var formData = $('#signup-form').serializeArray();
+	var formData = $('#input-form').serializeArray();
 	
 	// ajax通信
 	$.ajax({
 		type : "POST",
 		cache : false,
-		url : '/kibunmemo/signup/rest',
+		url : '/kibunmemo/input/rest',
 		data : formData,
 		dataType : 'json',
 	}).done(function(data) {
@@ -36,13 +36,13 @@ function signupUser() {
 				reflectValidResult(key, value)
 			});
 		} else if(data.result === 0) {
-			alert('ユーザーを登録しました');
+			alert('メモを登録しました');
 			// ログイン画面にリダイレクト
-			window.location.href = '/login';
+			window.location.href = '/kibunmemo/list';
 		}
 	}).fail(function(jqXHR, textStatus, errorThrown) {
 		// ajax失敗時の処理
-		alert('ユーザー登録に失敗しました');
+		alert('メモの登録に失敗しました');
 	
 	}).always(function() {
 		// 常に実行する処理
@@ -58,11 +58,18 @@ function removeValidResult() {
 
 /** バリデーション結果の反映 */
 function reflectValidResult(key, value) {
+	if(key === 'text') {
+		
+		$('#err_textarea').append('<p style="color:red"><i class=\"fa fa-exclamation-triangle\"></i>' + value + '</p>');
+		$('<span th:if="${#fields.hasErrors(' + key + ')}" th:errors="*{' + key + '}" style="color: red"></span>')
+			.after('<div class="invalid-feedback">' + value + '</div>');
+	} else {
 	
-	// CSS適用
-	$('input[id=' + key + ']').addClass('is-invalid');
+		// CSS
+		$('input[id=' + key + ']').addClass('is-invalid');
 	
-	// エラーメッセージ追加
-	$('input[id=' + key + ']')
-		.after('<div class="invalid-feedback">' + value + '</div>');
+		// エラーメッセージ追加
+		$('input[id=' + key + ']')
+			.after('<div class="invalid-feedback">' + value + '</div>');
+	}
 }

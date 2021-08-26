@@ -30,13 +30,13 @@ function updateMemo() {
 		dataType : 'json',
 	}).done(function(data) {
 		// ajax成功時の処理
-		alert('ユーザーを更新しました');
+		alert('メモを更新しました');
 		// ユーザー一覧画面にリダイレクト
 		window.location.href = '/kibunmemo/list';
 		
 	}).fail(function(jqXHR, textStatus, errorThrown) {
 		// ajax失敗時の処理
-		alert('ユーザー更新に失敗しました');
+		alert('メモの更新に失敗しました');
 	}).always(function() {
 		// 常に実行する処理
 	});
@@ -56,13 +56,13 @@ function deleteMemo() {
 		dataType : 'json',
 	}).done(function(data) {
 		// ajax成功時の処理
-		alert('ユーザーを削除しました');
+		alert('メモを削除しました');
 		// ユーザー一覧画面にリダイレクト
 		window.location.href = '/kibunmemo/list';
 		
 	}).fail(function(jqXHR, textStatus, errorthrown) {
 		// ajax失敗時の処理
-		alert('ユーザー削除に失敗しました');
+		alert('メモの削除に失敗しました');
 		
 	}).always(function() {
 		// 常に実行する処理

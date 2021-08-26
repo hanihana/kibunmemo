@@ -21,36 +21,36 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/kibunmemo")
 public class InputController {
-	
+
 	@Autowired
 	private MemoService memoService;
-	
+
 	@Autowired
 	private ModelMapper modelMapper;
-	
+
 	/** メモ作成画面表示 */
 	@GetMapping("/insert")
 	public String getInsert(@ModelAttribute MemoForm form) {
-		
+
 		return "insert";
-		
+
 	}
-	
+
 	/** メモ登録処理 */
 	@PostMapping("/insert")
 	public String postInsert(@ModelAttribute @Validated(GroupOrder.class) MemoForm form,
 			BindingResult bindingResult) {
-		
+
 		if(bindingResult.hasErrors()) {
 			return getInsert(form);
 		}
-		
+
 		log.info(form.toString());
-		
+
 		Memo memo = modelMapper.map(form, Memo.class);
-		
+
 		memoService.inputOne(memo);
-		
+
 		return "redirect:/kibunmemo/list";
 	}
 
