@@ -63,6 +63,7 @@ function reflectValidResult(key, value) {
 		$('#err_textarea').append('<p style="color:red"><i class=\"fa fa-exclamation-triangle\"></i>' + value + '</p>');
 		$('<span th:if="${#fields.hasErrors(' + key + ')}" th:errors="*{' + key + '}" style="color: red"></span>')
 			.after('<div class="invalid-feedback">' + value + '</div>');
+			
 	} else {
 	
 		// CSS
@@ -71,5 +72,6 @@ function reflectValidResult(key, value) {
 		// エラーメッセージ追加
 		$('input[id=' + key + ']')
 			.after('<div class="invalid-feedback">' + value + '</div>');
+			
 	}
 }
