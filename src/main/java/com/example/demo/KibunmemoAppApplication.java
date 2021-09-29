@@ -9,5 +9,5 @@ public class KibunmemoAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(KibunmemoAppApplication.class, args);
 	}
-
+	
 }
