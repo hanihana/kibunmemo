@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.example.demo.repository.MemoMapper">
+
+	<!-- マッピング定義(メモ) -->
+	<resultMap type="com.example.demo.model.Memo" id="memo">
+		<id column="id" property="id"></id>
+		<result column="feeling" property="feeling"></result>
+		<result column="text" property="text"></result>
+		<result column="day" property="day"></result>
+	</resultMap>
+	
+	<!-- マッピング定義(ユーザー) -->
+	<!--  <resultMap type="com.example.demo.model.User" id="user">
+		<id column="id" property="id"></id>
+		<result column="user_id" property="userId"></result>
+		<result column="password" property="password"></result>
+		<result column="role" property="role"></result>
+	</resultMap> -->
+	
+	<!-- メモ1件登録 -->
+	<insert id = "insertOne">
+		INSERT INTO kibun_memo (
+			  feeling
+			, text
+			, day
+		)
+		VALUES (
+			  #{feeling}
+			, #{text}
+			, #{day}
+		)
+	</insert>
+
+	<!-- メモ複数件取得 -->
+    <select id = "findAll" resultType="Memo">
+        SELECT
+        	*
+        FROM
+        	kibun_memo
+    </select>
+    
+    <!-- メモ1件取得 -->
+    <select id = "findOne" resultMap="memo">
+    	SELECT
+    		*
+    	FROM
+    		kibun_memo
+    	WHERE
+    		id = #{id}
+    </select>
+    
+    <!-- メモ1件更新 -->
+    <update id = "updateOne">
+    	UPDATE
+    		kibun_memo
+    	SET
+    		  feeling = #{feeling}
+    		, text = #{text}
+    	WHERE
+    		id = #{id}
+    </update>
+    
+    <!-- メモ1件削除 -->
+    <delete id = "deleteOne">
+    	DELETE FROM
+    		kibun_memo
+    	WHERE
+    		id = #{id}
+    </delete>
+    
+    <!-- ログインユーザー登録 -->
+    <insert id = "insertUser">
+		INSERT INTO login_user (
+			  user_id
+			, password
+			, role
+		)
+		VALUES (
+			  #{userId}
+			, #{password}
+			, #{role}
+		)
+	</insert>
+	
+	<!-- ログインユーザー取得 -->
+	<select id = "findLoginUser" resultType = "User">
+		SELECT
+			*
+		FROM
+			login_user
+		WHERE
+			user_id = #{userId}
+	</select>
+	
+</mapper>
