@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.5.3'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'war'
 }
 
 group = 'com.example'
@@ -31,6 +32,7 @@ dependencies {
 	implementation group: 'org.webjars', name: 'webjars-locator', version: '0.41'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.5.5'
 	implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5', version: '3.0.4.RELEASE'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	runtimeOnly group: 'org.aspectj', name: 'aspectjweaver'
 	compileOnly 'org.projectlombok:lombok'
 	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.4.4'
