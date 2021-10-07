@@ -17,7 +17,7 @@
 	</head>
 	<body>
 		<section class="container">
-			<form id="input-form" method="post" action="/kibunmemo/insert"
+			<form id="input-form" method="post" th:action="@{/kibunmemo/insert}"
 				th:object="${memoForm}" class="form-insert">
 				<h1>
 					<font color="#5bc0de">気分メモ作成</font>
