@@ -13,7 +13,7 @@
 		<title>ユーザー登録</title>
 	</head>
 	<body class="bg-light">
-		<form id="signup-form" method="post" action="/kibunmemo/signup"
+		<form id="signup-form" method="post" th:action="@{/kibunmemo/signup}"
 			class="form-signup" th:object="${signupForm}">
 			<h1 class="text-center">ユーザー登録</h1>
 			<br>
